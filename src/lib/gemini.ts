@@ -171,7 +171,9 @@ Follow the above instructions strictly.
   let lastError = "Unknown Gemini error";
 
   for (const model of modelsToTry) {
-    const url = `${GEMINI_API_BASE}/${model}:generateContent?key=${apiKey}`;
+    // Keep the key out of URLs: URLs may be retained in browser history, proxies,
+    // analytics, or error logs. The API accepts the same key via this header.
+    const url = `${GEMINI_API_BASE}/${model}:generateContent`;
 
     // Keep it smooth: one retry per model, then fallback quickly.
     for (let attempt = 0; attempt < 2; attempt++) {
