@@ -31,6 +31,7 @@ import AccessibilityPanel from "./components/AccessibilityPanel";
 import CalendarWidget from "./components/CalendarWidget";
 import FloatingChatbot from "./components/FloatingChatbot";
 import Pages, { PAGE_ROUTES } from "./components/Pages";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   const [hash, setHash] = useState(() => window.location.hash);
@@ -50,6 +51,7 @@ export default function App() {
 
   return (
     <AppProvider>
+      <Analytics />
       {hash === "#admin" ? (
         <AdminDashboard />
       ) : isPage ? (
